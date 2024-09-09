@@ -1,0 +1,13 @@
+<div class="recipe-container">
+    <p>
+        <img [src]="recipe.imageUrl" alt="{{recipe?.imageUrl}}" class="recipe-photo">
+        <br />
+        <span class="recipe-name">{{ recipe?.nameR }}</span>
+        <br />
+        <span class="recipe-preparation-time">זמן הכנה: {{ recipe.time | durationFormatPipe }}</span>
+        <br />
+        <span class="recipe-difficulty"> {{ getStarRating(recipe.level) }} :רמת קושי</span>
+        <br />
+        <button (click)="moreDitails()" class="btn">להצגת פרטי המתכון</button>
+    </p>
+</div>

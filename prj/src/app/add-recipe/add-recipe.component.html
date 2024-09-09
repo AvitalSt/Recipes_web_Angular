@@ -1,0 +1,54 @@
+<form [formGroup]="addRecipeForm" class="container mt-5">
+  <h1>מתכון חדש</h1>
+  <div class="mb-3">
+    <mat-form-field appearance="fill">
+      <mat-label>שם המתכון</mat-label>
+      <input matInput formControlName="nameR" name="nameR" type="text">
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="fill">
+      <mat-label>קטגוריה</mat-label>
+      <select matNativeControl (change)="setCategortId($event)" formControlName="idC" name="idC">
+        <option value="0" selected>עיקרית</option>
+        <option value="1">תוספת</option>
+        <option value="2">קינוח</option>
+      </select>
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="fill">
+      <mat-label>זמן הכנה בדקות</mat-label>
+      <input matInput formControlName="time" name="time" type="number">
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="fill">
+      <mat-label>רמת קושי הכנה</mat-label>
+      <input matInput formControlName="level" name="level" type="number">
+    </mat-form-field>
+  </div>
+  <div formArrayName="listComponents">
+    <div *ngFor="let component of listComponents.controls; let i=index" class="mb-3">
+      <mat-form-field appearance="fill">
+        <mat-label>הוסף רכיב</mat-label>
+        <input matInput [formControlName]="i" (input)="onCompInput(i)">
+      </mat-form-field>
+    </div>
+  </div>
+  <div formArrayName="prepartion">
+    <div *ngFor="let pre of prepartion.controls; let i=index" class="mb-3">
+      <mat-form-field appearance="fill">
+        <mat-label>הוסף הוראת מתכון</mat-label>
+        <input matInput [formControlName]="i" (input)="onPreInput(i)">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="fill">
+      <mat-label>הוסף תמונה</mat-label>
+      <input matInput formControlName="imageUrl" name="imageUrl" type="text">
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" class="styled-button" (click)="addRecipe()">הוסף</button>
+</form>

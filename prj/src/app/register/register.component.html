@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">רישום משתמש חדש</h3>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="nameU">שם משתמש:</label>
+              <input type="text" class="form-control" id="nameU" name="nameU" [(ngModel)]="nameU" placeholder="שם משתמש"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="address">כתובת:</label>
+              <input type="text" class="form-control" id="address" name="address" [(ngModel)]="address"
+                placeholder="כתובת" required>
+            </div>
+            <div class="form-group">
+              <label for="email">אימייל:</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="אימייל"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="password">סיסמה:</label>
+              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"
+                placeholder="סיסמה" required>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary">הרשם</button>
+            </div>
+          </form>
+          <p *ngIf="nameIsIn" class="text-danger">משתמש זה כבר קיים במערכת</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

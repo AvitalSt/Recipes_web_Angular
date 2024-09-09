@@ -1,0 +1,18 @@
+<button (click)="callCopAddRecipe()" class="btn">הוספת מתכון</button>
+<div class="all">
+   <label for="searchName">חפש לפי שם:</label>
+   <input id="searchName" type="text" [(ngModel)]="searchName" (input)="filterRecipes()">
+   <br />
+   <label for="category">קטגוריה:</label>
+   <select id="category" [(ngModel)]="selectedCategory" (change)="filterRecipes()">
+      <option value="">הכל</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+   </select>
+   <br />
+   <label for="maxPrepTime">זמן הכנה מקסימלי (בדקות):</label>
+   <input id="maxPrepTime" type="number" [(ngModel)]="maxPrepTime" (input)="filterRecipes()">
+</div>
+<br />
+<div *ngFor="let recipe of filteredRecipeList" class="recipe-card">
+   <app-small-recipe [idR]="recipe.idR" [idU]="recipe.idU"></app-small-recipe>
+</div>
